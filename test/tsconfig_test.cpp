@@ -174,8 +174,8 @@ TEST(ConfigTest, CmdLineArgsOverrideConfigFileAndEnvVars) {
     ASSERT_EQ("abcd", config.get_api_key());  // cli parameter overrides file config
     ASSERT_EQ(1, config.get_cors_domains().size());  // cli parameter overrides file config
     ASSERT_EQ("http://localhost:8108", *(config.get_cors_domains().begin()));
-    ASSERT_EQ(250, *(config.get_max_per_page()));
-    ASSERT_EQ(250, *(config.get_default_topster_size()));
+    ASSERT_EQ(250, config.get_max_per_page());
+    ASSERT_EQ(250, config.get_default_topster_size());
 }
 
 TEST(ConfigTest, CorsDefaults) {
