@@ -565,6 +565,14 @@ public:
             this->api_key = reader.Get("server", "api-key", "");
         }
 
+        if(reader.Exists("server", "max-per-page")) {
+            this->max_per_page = reader.GetInteger("server", "max-per-page", 250);
+        }
+
+        if(reader.Exists("server", "default-topster-size")) {
+            this->default_topster_size = (size_t) reader.GetInteger("server", "default-topster-size", 250);
+        }
+
         // @deprecated
         if(reader.Exists("server", "search-only-api-key")) {
             this->search_only_api_key = reader.Get("server", "search-only-api-key", "");
@@ -718,14 +726,6 @@ public:
             this->reset_peers_on_error = (reset_peers_on_error_str == "true");
         }
 
-        if(reader.Exists("server", "max-per-page")) {
-            this->max_per_page = reader.GetInteger("server", "max-per-page", 250);
-        }
-
-        if(reader.Exists("server", "default-topster-size")) {
-            this->default_topster_size = (size_t) reader.GetInteger("server", "default-topster-size", 250);
-        }
-
     }
 
     void load_config_cmd_args(cmdline::parser & options) {
@@ -743,6 +743,14 @@ public:
 
         if(options.exist("api-key")) {
             this->api_key = options.get<std::string>("api-key");
+        }
+
+        if(options.exist("max-per-page")) {
+            this->max_per_page = options.get<int>("max-per-page");
+        }
+
+        if(options.exist("default-topster-size")) {
+            this->default_topster_size = options.get<size_t>("default-topster-size");
         }
 
 
@@ -890,14 +898,6 @@ public:
 
         if(options.exist("enable-search-logging")) {
             this->enable_search_logging = options.get<bool>("enable-search-logging");
-        }
-
-        if(options.exist("max-per-page")) {
-            this->max_per_page = options.get<int>("max-per-page");
-        }
-
-        if(options.exist("default-topster-size")) {
-            this->default_topster_size = options.get<size_t>("default-topster-size");
         }
     }
 
