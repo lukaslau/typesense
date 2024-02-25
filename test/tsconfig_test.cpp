@@ -30,6 +30,8 @@ TEST(ConfigTest, LoadCmdLineArguments) {
         "--data-dir=/tmp/data",
         "--api-key=abcd",
         "--listen-port=8080",
+        "--max-per-page=250",
+        "--default-topster-size=250",
     };
 
     std::vector<char*> argv = get_argv(args);
