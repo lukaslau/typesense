@@ -147,7 +147,7 @@ TEST(ConfigTest, CmdLineArgsOverrideConfigFileAndEnvVars) {
         "--listen-address=192.168.10.10",
         "--cors-domains=http://localhost:8108",
         "--max-per-page=250",
-        "--default-topster-size=20",
+        "--default-topster-size=250",
         std::string("--config=") + std::string(ROOT_DIR)+"test/valid_sparse_config.ini"
     };
 
