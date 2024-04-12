@@ -14,16 +14,15 @@
  <!-- <a href="https://circleci.com/gh/typesense/typesense"><img src="https://circleci.com/gh/typesense/typesense.svg?style=shield&circle-token=1addd775339738a3d90869ddd8201110d561feaa"></a> -->
  <a href="https://hub.docker.com/r/typesense/typesense/tags"><img src="https://img.shields.io/docker/pulls/typesense/typesense"></a>
   <a href="https://github.com/typesense"><img src="https://img.shields.io/github/stars/typesense/typesense?label=github%20stars&style=flat"></a><br>
-  <a href="https://cloud.typesense.org"><img src="https://img.shields.io/badge/searches_per_month_on_typesense_cloud-2.5 Billion-blue"></a>
+  <a href="https://cloud.typesense.org"><img src="https://img.shields.io/badge/searches_per_month_on_typesense_cloud-3 Billion-blue"></a>
 <p>
 <p align="center">
   <a href="https://typesense.org">Website</a> | 
   <a href="https://typesense.org/docs/">Documentation</a> | 
   <a href="https://github.com/orgs/typesense/projects/1">Roadmap</a> | 
-  <a href="https://join.slack.com/t/typesense-community/shared_invite/zt-25mb3r14m-60o24PIIkDt~a6x7mk1XDQ">Slack Community</a> | 
+  <a href="https://join.slack.com/t/typesense-community/shared_invite/zt-2fetvh0pw-ft5y2YQlq4l_bPhhqpjXig">Slack Community</a> | 
   <a href="https://threads.typesense.org/kb">Community Threads</a> | 
-  <a href="https://twitter.com/typesense">Twitter</a> | 
-  <a href="https://calendly.com/jason-typesense/typesense-office-hours">Office Hours</a>
+  <a href="https://twitter.com/typesense">Twitter</a>
 </p>
 <br>
 <p align="center">
@@ -79,7 +78,11 @@
 - **Geo Search:** Search and sort by results around a latitude/longitude or within a bounding box.
 - **Vector Search:** Index embeddings from your machine learning models in Typesense and do a nearest-neighbor search. Can be used to build similarity search, semantic search, visual search, recommendations, etc.
 - **Semantic / Hybrid Search:** Automatically generate embeddings from within Typesense using built-in models like S-BERT, E-5, etc or use OpenAI, PaLM API, etc, for both queries and indexed data. This allows you to send JSON data into Typesense and build an out-of-the-box semantic search + keyword search experience.
+- **Conversational Search (Built-in RAG):** Send questions to Typesense and have the response be a fully-formed sentence, based on the data you've indexed in Typesense. Think ChatGPT, but over your own data.
+- **Image Search:** Search through images using text descriptions of their contents, or perform similarity searches, using the CLIP model.
+- **Voice Search:** Capture and send query via voice recordings - Typesense will transcribe (via Whisper model) and provide search results.
 - **Scoped API Keys:** Generate API keys that only allow access to certain records, for multi-tenant applications.
+- **JOINs:** Connect one or more collections via common reference fields and join them during query time. This allows you to model SQL-like relationships elegantly.
 - **Synonyms:** Define words as equivalents of each other, so searching for a word will also return results for the synonyms defined.
 - **Curation & Merchandizing:** Boost particular records to a fixed position in the search results, to feature them.
 - **Raft-based Clustering:** Setup a distributed cluster that is highly available.
@@ -112,7 +115,7 @@ We'd love to benchmark with larger datasets, if we can find large ones in the pu
 
 Typesense is used by a range of users across different domains and verticals.
 
-On Typesense Cloud we serve more than **2.5 BILLION** searches per month. Typesense's Docker images have been downloaded over 7M times.
+On Typesense Cloud we serve more than **3 BILLION** searches per month. Typesense's Docker images have been downloaded over 12M times.
 
 We've recently started documenting who's using it in our [Showcase](SHOWCASE.md).
 If you'd like to be included in the list, please feel free to edit [SHOWCASE.md](SHOWCASE.md) and send us a PR.
@@ -137,7 +140,7 @@ Here's a quick example showcasing how you can create a collection, index a docum
 Let's begin by starting the Typesense server via Docker:
 
 ```
-docker run -p 8108:8108 -v/tmp/data:/data typesense/typesense:0.25.2 --data-dir /data --api-key=Hu52dwsas2AdxdE
+docker run -p 8108:8108 -v/tmp/data:/data typesense/typesense:26.0 --data-dir /data --api-key=Hu52dwsas2AdxdE
 ```
 
 We have [API Clients](#api-clients) in a couple of languages, but let's use the Python client for this example.
@@ -348,9 +351,7 @@ If you have specifics that prevent you from using Typesense due to a licensing i
 
 ## Support
 
-👋 🌐 If you have general questions about Typesense, want to say hello or just follow along, we'd like to invite you to join our [Slack Community](https://join.slack.com/t/typesense-community/shared_invite/zt-25mb3r14m-60o24PIIkDt~a6x7mk1XDQ). 
-
-We also do virtual office hours every Friday. Reserve a time slot [here](https://calendly.com/jason-typesense/typesense-office-hours).
+👋 🌐 If you have general questions about Typesense, want to say hello or just follow along, we'd like to invite you to join our public [Slack Community](https://join.slack.com/t/typesense-community/shared_invite/zt-2fetvh0pw-ft5y2YQlq4l_bPhhqpjXig). 
 
 If you run into any problems or issues, please create a GitHub issue and we'll try our best to help.
 
@@ -359,10 +360,10 @@ We strive to provide good support through our issue trackers on GitHub. However,
 - Guaranteed SLAs
 - Phone / video calls to discuss your specific use case and get recommendations on best practices
 - Private discussions over Slack
-- Guidance around deployment, ops and scaling best practices
+- Guidance around scaling best practices
 - Prioritized feature requests
 
-We do offer Paid Support options. Please reach out to us at contact@typesense.org to sign up.
+We offer Paid Support options described [here](https://typesense.org/support/).
 
 ## Contributing
 
@@ -374,7 +375,7 @@ If you'd like to get updates when we release new versions, click on the "Watch" 
 
 We also post updates to our Twitter account about releases and additional topics related to Typesense. Follow us here: [@typesense](https://twitter.com/typesense).
 
-👋 🌐 We'll also post updates on our [Slack Community](https://join.slack.com/t/typesense-community/shared_invite/zt-25mb3r14m-60o24PIIkDt~a6x7mk1XDQ). 
+👋 🌐 We'll also post updates on our [Slack Community](https://join.slack.com/t/typesense-community/shared_invite/zt-2fetvh0pw-ft5y2YQlq4l_bPhhqpjXig). 
 
 ## Build from source
 
